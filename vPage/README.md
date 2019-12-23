@@ -2,21 +2,18 @@
 
 > vuePage &amp; Nuxt.js
 
-## Build Setup
+## 前端nuxt.js服务端渲染博客
 
-``` bash
-# install dependencies
-$ npm run install
+### Todo 
+* [x] 利用iview搭建好主页
+* [x] 设计blog样式
+* [ ] blog详情页
+* [ ] 连接server  
+* [ ] 接入github评论框
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## 目前用到的技术
+* [x] nest.js + typescript
+* [x] vue + axios + iview + nuxt.js -> ssr
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## 目标
+<p style="text-align:center">实现SSR利于搜索的博客，自己使用和维护，探索高性能页面优化方式，客户端预渲染，服务端渲染，单页等不同的使用场景。</p>

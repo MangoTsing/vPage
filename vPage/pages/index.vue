@@ -3,24 +3,21 @@
     <div>
       <logo />
       <h1 class="title">
-        vPage
+        vPage—qicoo
       </h1>
       <h2 class="subtitle">
-        Welcome to the iView + Nuxt.js template
+        欢迎来到我的试验田
       </h2>
       <div class="links">
-        <Button type="primary" target="_blank" to="https://nuxtjs.org/">
-          Documentation
+        <Button type="primary" size="large" target="_blank" to="/home">
+          主页
         </Button>
-        <Button target="_blank" to="https://github.com/nuxt/nuxt.js">
+        <Button target="_blank" size="large" to="https://github.com/mangotsing">
           GitHub
-        </Button>
-        <Button target="_blank" to="https://www.iviewui.com/">
-          iView
         </Button>
       </div>
     </div>
-  </div>
+  </div> 
 </template>
 
 <script>
