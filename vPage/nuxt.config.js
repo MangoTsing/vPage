@@ -47,6 +47,9 @@ export default {
   modules: [
     '@nuxtjs/axios',
   ],
+  router:{
+    base:"/" //此为根目录，如果有具体目录需求按实际情况写
+  },
   axios: {
     // proxyHeaders: false
   },

@@ -23,13 +23,14 @@ export default function({ $axios, redirect }) {
        */
       response => {
         const res = response.data
-        if (res.code === 20000) {
-          return res
-        } else {
-          redirect('/404')
-          // if the custom code is not 200, it is judged as an error.
-        }
-        return Promise.reject(new Error(res.msg || 'Error'))
+        return res
+        // if (res.code === 20000) {
+        //   return res
+        // } else {
+        //   redirect('/404')
+        //   // if the custom code is not 200, it is judged as an error.
+        // }
+        // return Promise.reject(new Error(res.msg || 'Error'))
       },
       error => {
         console.log('err' + error) // for debug

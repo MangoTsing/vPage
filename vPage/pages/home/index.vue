@@ -58,3 +58,8 @@ export default {
     padding: 30px 10px;
 }
 </style>
+<style>
+.ivu-layout-header {
+    min-width: 1010px;
+}
+</style>
