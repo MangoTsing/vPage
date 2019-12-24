@@ -33,7 +33,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/iview'
+    '@/plugins/iview',
+    '@/plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -44,7 +45,11 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+  axios: {
+    // proxyHeaders: false
+  },
   /*
   ** Build configuration
   */

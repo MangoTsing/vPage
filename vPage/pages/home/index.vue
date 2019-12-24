@@ -30,10 +30,13 @@ export default {
         }
     },
     methods: {
-        
+        async fetchSomething() {
+            const ip = await this.$axios.$get('http://59.110.236.40/myblogtxt')
+            console.log(ip)
+        }
     },
     mounted() {
-        
+        this.fetchSomething()
     }
 }
 </script>
