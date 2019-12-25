@@ -22,7 +22,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#3B8070' },
   /*
   ** Global CSS
   */
@@ -34,7 +34,8 @@ export default {
   */
   plugins: [
     '@/plugins/iview',
-    '@/plugins/axios'
+    '@/plugins/axios',
+    {src: '~plugins/iview', ssr: true}
   ],
   /*
   ** Nuxt.js dev-modules

@@ -22,40 +22,26 @@
 </template>
 <script>
     export default {
+        props: {
+            blogData: {
+                type: Object,
+                default: {}
+            }
+        },
         data () {
             return {
-                blogData: [
-                    {
-                        title: '我的博客 1',
-                        summary: 'This is summary, this is summary, this is summary.',
-                        author: 'https://authors1.githubusertags.com/u/23053008?s=460&v=4',
-                        tags: 'This is the tags, this is the tags, this is the tags, this is the tags.'
-                    },
-                    {
-                        title: '我的博客 2',
-                        summary: 'This is summary, this is summary, this is summary.',
-                        author: 'https://authors1.githubusertags.com/u/23053008?s=460&v=4',
-                        tags: 'This is the tags, this is the tags, this is the tags, this is the tags.'
-                    },
-                    {
-                        title: '我的博客 3',
-                        summary: 'This is summary, this is summary, this is summary.',
-                        author: 'https://authors1.githubusertags.com/u/23053008?s=460&v=4',
-                        tags: 'This is the tags, this is the tags, this is the tags, this is the tags.'
-                    }
-                ],
-                loadData: true
+                loadData: false
             }
         },
-        methods: {
-            async fetchSomething() {
-                const blogData = await this.$axios.$get('http://59.110.236.40/api/myblogtxt')
-                this.blogData = blogData
-                this.loadData = false
-            }
-        },
+        // methods: {
+        //     async fetchSomething() {
+        //         const blogData = await this.$axios.$get('http://59.110.236.40/api/myblogtxt')
+        //         this.blogData = blogData
+        //         this.loadData = false
+        //     }
+        // },
         mounted() {
-            this.fetchSomething()
+            console.log(this.blogData)
         }
     }
 </script>
