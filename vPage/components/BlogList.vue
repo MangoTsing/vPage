@@ -1,8 +1,8 @@
 <template>
-    <List item-layout="vertical">
-        <ListItem v-for="item in data" :key="item.title" >
-            <ListItemMeta :avatar="item.avatar" :title="item.title" :description="item.description" />
-            {{ item.content }}
+    <List item-layout="vertical" header="6⃣️6⃣️6⃣️" size="large" :loading="loadData">
+        <ListItem v-for="(item,index) in blogData" :key="index" >
+            <ListItemMeta :author="item.author" :title="item.title" :description="item.author" />
+            {{ item.summary }}
             <template slot="action">
                 <li>
                     <Icon type="ios-star-outline" /> 123
@@ -24,27 +24,38 @@
     export default {
         data () {
             return {
-                data: [
+                blogData: [
                     {
                         title: '我的博客 1',
-                        description: 'This is description, this is description, this is description.',
-                        avatar: 'https://avatars1.githubusercontent.com/u/23053008?s=460&v=4',
-                        content: 'This is the content, this is the content, this is the content, this is the content.'
+                        summary: 'This is summary, this is summary, this is summary.',
+                        author: 'https://authors1.githubusertags.com/u/23053008?s=460&v=4',
+                        tags: 'This is the tags, this is the tags, this is the tags, this is the tags.'
                     },
                     {
                         title: '我的博客 2',
-                        description: 'This is description, this is description, this is description.',
-                        avatar: 'https://avatars1.githubusercontent.com/u/23053008?s=460&v=4',
-                        content: 'This is the content, this is the content, this is the content, this is the content.'
+                        summary: 'This is summary, this is summary, this is summary.',
+                        author: 'https://authors1.githubusertags.com/u/23053008?s=460&v=4',
+                        tags: 'This is the tags, this is the tags, this is the tags, this is the tags.'
                     },
                     {
                         title: '我的博客 3',
-                        description: 'This is description, this is description, this is description.',
-                        avatar: 'https://avatars1.githubusercontent.com/u/23053008?s=460&v=4',
-                        content: 'This is the content, this is the content, this is the content, this is the content.'
+                        summary: 'This is summary, this is summary, this is summary.',
+                        author: 'https://authors1.githubusertags.com/u/23053008?s=460&v=4',
+                        tags: 'This is the tags, this is the tags, this is the tags, this is the tags.'
                     }
-                ]
+                ],
+                loadData: true
             }
+        },
+        methods: {
+            async fetchSomething() {
+                const blogData = await this.$axios.$get('http://59.110.236.40/api/myblogtxt')
+                this.blogData = blogData
+                this.loadData = false
+            }
+        },
+        mounted() {
+            this.fetchSomething()
         }
     }
 </script>

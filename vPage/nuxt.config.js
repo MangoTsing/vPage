@@ -46,6 +46,16 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  proxy: [
+    [
+      '/api', 
+      { 
+        target: 'http://172.17.131.56:8360', // api主机
+        pathRewrite: { '^/api' : '/' }
+      }
+  ]
   ],
   router:{
     base:"/" //此为根目录，如果有具体目录需求按实际情况写
@@ -57,10 +67,7 @@ export default {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
+    cache: true,
+    parallel: true
   }
 }

@@ -14,8 +14,9 @@
 ### Todo 
 * [x] 利用iview搭建好主页
 * [x] 设计blog样式
+* [x] 连接server,展示一部分接口
+* [x] axios增加拦截器，添加proxy，便于本地开发，指向8360端口
 * [ ] blog详情页
-* [ ] 连接server  
 * [ ] 接入github评论框
 
 ## 目前用到的技术
