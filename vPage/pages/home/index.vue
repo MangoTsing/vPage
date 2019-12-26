@@ -43,7 +43,7 @@ export default {
     asyncData ({ params }) {//请求
         return  axios({
             method: 'get',
-            url: 'http://59.110.236.40/api/myblogtxt'
+            url: '/api/myblogtxt'
         })
 	.then(function (response) {
             return { blogData: response.data.data};
