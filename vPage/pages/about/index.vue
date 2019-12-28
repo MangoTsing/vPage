@@ -1,22 +1,18 @@
 <template>
   <div class="container">
     <div>
-      <logo />
       <h1 class="title">
-        vPage2
+        开发中...
       </h1>
       <h2 class="subtitle">
-        Welcome to the iView + Nuxt.js template
+        欢迎访问我的github主页，给我提出意见！
       </h2>
       <div class="links">
-        <Button type="primary" target="_blank" to="https://nuxtjs.org/">
-          Documentation
+        <Button type="primary" target="_blank" to="/home">
+          主页
         </Button>
-        <Button target="_blank" to="https://github.com/nuxt/nuxt.js">
-          GitHub
-        </Button>
-        <Button target="_blank" to="https://www.iviewui.com/">
-          iView
+        <Button target="_blank" to="https://github.com/mangotsing">
+          Github
         </Button>
       </div>
     </div>
@@ -24,10 +20,8 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 export default {
   components: {
-    Logo
   }
 }
 </script>
