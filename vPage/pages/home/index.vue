@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="appear">
         <Header>
             <TopNav />
         </Header>
@@ -12,7 +12,7 @@
                         {{ item.summary }}
                         </nuxt-link>
                         <template slot="action">
-                            <li>
+                            <li @click="postStar(item)">
                                 <Icon type="ios-star-outline" /> {{item.star || 0}}
                             </li>
                             <li>
@@ -53,6 +53,25 @@ export default {
         return {
         }
     },
+    methods: {
+        postStar(item) {
+            return axios({
+                method: 'get',
+                url: '/api/myblogtxt/poststar?title=' + encodeURI(item.title)
+            }).then(res=>{
+                // this.getList()
+                item.star += 1
+            })
+        },
+        getList() {
+            return axios({
+                method: 'get',
+                url: '/api/myblogtxt'
+            }).then(res=>{
+                this.blogData = res.data.data
+            })
+        }
+    },
     mounted() {
     }
 
@@ -79,5 +98,16 @@ export default {
 <style>
 .ivu-layout-header {
     min-width: 1010px;
+}
+.appear {
+    animation: 1s appear;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

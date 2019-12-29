@@ -25,6 +25,7 @@ ul {
 }
 </style>
 <script>
+import axios from 'axios'
     export default {
         data () {
             return {
@@ -107,6 +108,12 @@ ul {
         },
         mounted () {
             this.changeLimit();
+            axios({
+                method: 'get',
+                url: '/api/myblogtxt/movieList'
+            }).then(res=>{
+                console.log(res)
+            })
         }
     }
 </script>

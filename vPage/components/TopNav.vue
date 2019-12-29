@@ -2,7 +2,8 @@
     <div class="main">
         <span class="title">qicoo-魔法试验田</span>
         <ul>
-            <li class="list"><Button size="large" :long="true" type="text" ghost target="_blank" to="/home">主页</Button></li>
+            <li class="list"><Button size="large" :long="true" type="text" ghost target="_blank" to="/">主页</Button></li>
+            <li class="list"><Button size="large" :long="true" type="text" ghost target="_blank" to="/home">博客</Button></li>
             <li class="list"><Button size="large" :long="true" type="text" ghost target="_blank" to="https://github.com/mangotsing">Github</Button></li>
             <li class="list"><Button size="large" :long="true" type="text" ghost target="_blank" to="/about">关于我</Button></li>
         </ul>
