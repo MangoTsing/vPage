@@ -2,18 +2,20 @@
     <Card style="width:190px">
         <p slot="title">
             <Icon type="ios-film-outline"></Icon>
-            经典电影
+            {{movieList.title}}
         </p>
-        <a href="#" slot="extra" @click.prevent="changeLimit">
+        <!-- <p href="#" slot="extra" @click.prevent="changeLimit">
             <Icon type="ios-loop-strong"></Icon>
             换一批
-        </a>
+        </p> -->
         <ul>
-            <li v-for="(item,index) in randomMovieList" :key="index">
-                <a :href="item.url" target="_blank">{{ item.name }}</a>
+            <li v-for="(item,index) in movieList.subjects" :key="index">
+                <a :href="item.alt" target="_blank">{{ item.title }}</a>
                 <span>
-                    <Icon type="ios-star" v-for="n in 4" :key="n"></Icon><Icon type="ios-star" v-if="item.rate >= 9.5"></Icon><Icon type="ios-star-half" v-else></Icon>
-                    {{ item.rate }}
+                    <span v-if="item.rating.average!==0">
+                    <Icon type="ios-star" v-for="n in Math.ceil(item.rating.average/2)" :key="n"></Icon>
+                    </span>
+                    {{ item.rating.average===0? '无评分' :item.rating.average}}
                 </span>
             </li>
         </ul>
@@ -29,90 +31,18 @@ import axios from 'axios'
     export default {
         data () {
             return {
-                movieList: [
-                    {
-                        name: 'The Shawshank Redemption',
-                        url: 'https://movie.douban.com/subject/1292052/',
-                        rate: 9.6
-                    },
-                    {
-                        name: 'Leon:The Professional',
-                        url: 'https://movie.douban.com/subject/1295644/',
-                        rate: 9.4
-                    },
-                    {
-                        name: 'Farewell to My Concubine',
-                        url: 'https://movie.douban.com/subject/1291546/',
-                        rate: 9.5
-                    },
-                    {
-                        name: 'Forrest Gump',
-                        url: 'https://movie.douban.com/subject/1292720/',
-                        rate: 9.4
-                    },
-                    {
-                        name: 'Life Is Beautiful',
-                        url: 'https://movie.douban.com/subject/1292063/',
-                        rate: 9.5
-                    },
-                    {
-                        name: 'Spirited Away',
-                        url: 'https://movie.douban.com/subject/1291561/',
-                        rate: 9.2
-                    },
-                    {
-                        name: 'Schindlers List',
-                        url: 'https://movie.douban.com/subject/1295124/',
-                        rate: 9.4
-                    },
-                    {
-                        name: 'The Legend of 1900',
-                        url: 'https://movie.douban.com/subject/1292001/',
-                        rate: 9.2
-                    },
-                    {
-                        name: 'WALL·E',
-                        url: 'https://movie.douban.com/subject/2131459/',
-                        rate: 9.3
-                    },
-                    {
-                        name: 'Inception',
-                        url: 'https://movie.douban.com/subject/3541415/',
-                        rate: 9.2
-                    }
-                ],
+                movieList: [],
                 randomMovieList: []
             }
         },
         methods: {
-            changeLimit () {
-                function getArrayItems(arr, num) {
-                    const temp_array = [];
-                    for (let index in arr) {
-                        temp_array.push(arr[index]);
-                    }
-                    const return_array = [];
-                    for (let i = 0; i<num; i++) {
-                        if (temp_array.length>0) {
-                            const arrIndex = Math.floor(Math.random()*temp_array.length);
-                            return_array[i] = temp_array[arrIndex];
-                            temp_array.splice(arrIndex, 1);
-                        } else {
-                            break;
-                        }
-                    }
-                    return return_array;
-                }
-                this.randomMovieList = getArrayItems(this.movieList, 5);
-            }
         },
         mounted () {
-            this.changeLimit();
             axios({
                 method: 'get',
                 url: '/api/myblogtxt/movieList'
             }).then(res=>{
-                console.log(res)
+                this.movieList = res.data.data
             })
         }
     }

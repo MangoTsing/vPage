@@ -24,6 +24,7 @@
                         </template>
                     </ListItem>
                 </List>
+                <div id="gitment"></div>
             </div>
             <div class="right">
                 <ActionCard />
@@ -36,6 +37,16 @@ import TopNav from '~/components/TopNav.vue'
 import ActionCard from '~/components/ActionCard.vue'
 import axios from 'axios'
 export default {
+    head() {
+        return {
+                link: [
+                    { rel:"stylesheet", href:"https://s2.ssl.qhres.com/static/b9cc92f51476444e.css"}
+                ],
+                script: [
+                    { src:"https://s2.ssl.qhres.com/static/b2dccd87ceafd5e1.js"}
+                ]
+        }
+    },
     components: {
         TopNav,
         ActionCard
@@ -73,6 +84,15 @@ export default {
         }
     },
     mounted() {
+        var gitment = new Gitment({
+        owner: '757271842@qq.com',
+        repo: 'https://github.com/MangoTsing/vPage',
+        oauth: {
+            client_id: '2a5c95e26afc325ebd6a',
+            client_secret: 'e77b86d1722170a0ad83f02c21e27ac545877a73',
+        },
+        })
+        gitment.render('gitment')
     }
 
 }
