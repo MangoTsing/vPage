@@ -43,7 +43,7 @@ export default {
                     { rel:"stylesheet", href:"https://s2.ssl.qhres.com/static/b9cc92f51476444e.css"}
                 ],
                 script: [
-                    { src:"https://s2.ssl.qhres.com/static/b2dccd87ceafd5e1.js"}
+                    { src:"https://s5.ssl.qhres.com/static/8cbd096780bc622f.js"}
                 ]
         }
     },
@@ -85,8 +85,8 @@ export default {
     },
     mounted() {
         var gitment = new Gitment({
-        owner: '757271842@qq.com',
-        repo: 'https://github.com/MangoTsing/vPage',
+        owner: 'MangoTsing',
+        repo: 'vPage',
         oauth: {
             client_id: '2a5c95e26afc325ebd6a',
             client_secret: 'e77b86d1722170a0ad83f02c21e27ac545877a73',
