@@ -68,7 +68,7 @@ export default {
             method: 'get',
             url: '/api/myblogtxt/detail?title=' + encodeURI(query.title)
         })
-	.then(function (response) {
+	      .then(function (response) {
             return { blogData: response.data.data[0], blogContent: marked(response.data.data[0].content)};
         })
     },
