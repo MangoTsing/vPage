@@ -46,7 +46,7 @@
                 </Card> -->
                 <Card>
                     <div class="content" style="min-height: 400px;">
-                        <div v-html='blogContent'></div>
+                        <div id="content" v-html='blogContent'></div>
                     </div>
                 </Card>
             </Content>
@@ -76,10 +76,33 @@ export default {
         return {
 
         }
+    },
+    mounted() {
+      var menuNode = document.getElementById('content')
+      var menuNode = menuNode.querySelectorAll('h1,h2,h3')
+      var div = document.createElement('div')
+      div.setAttribute("id","markdown-nav")
+      for (var node of menuNode) {
+        var _node = node
+        div.appendChild(_node)
+      }
+      document.body.appendChild(div)
     }
 }
 </script>
 <style>
+#markdown-nav {
+  width: 200px;
+  height: 400px;
+  position: fixed;
+  right: 40px;
+  padding: 10px;
+  top: 120px;
+  border: 1px solid #303030
+}
+#markdown-nav h1 {
+  padding-left: 30px;
+}
 .content .markdown-here-wrapper {
   font-size: 16px;
   line-height: 1.8em;
