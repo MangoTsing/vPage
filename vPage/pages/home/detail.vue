@@ -1,3 +1,58 @@
+<template>
+    <div class="layout">
+        <Layout>
+            <Header>
+                <TopNav />
+            </Header>
+            <affix :offset="60" :content="content" class="nav"><div ref="markdown-nav"></div></affix>
+            <Content :style="{padding: '0 50px'}">
+                <Breadcrumb :style="{margin: '20px 0'}">
+                    <BreadcrumbItem>{{blogData.title}}</BreadcrumbItem>
+                </Breadcrumb>
+                <Card>
+                    <div class="content" style="min-height: 400px;">
+                        <div id="content" ref="content" v-html='blogContent'></div>
+                    </div>
+                </Card>
+            </Content>
+            <Footer class="layout-footer-center">2019-2020 &copy; {{blogData.title}}</Footer>
+        </Layout>
+    </div>
+</template>
+<script>
+import marked from 'marked'
+import TopNav from '~/components/TopNav.vue'
+import axios from 'axios'
+import Affix from '../../components/MarkdownAffix.vue'
+export default {
+    components: {
+        TopNav,
+        Affix
+    },
+    asyncData ({ query }) {//请求
+        return axios({
+            method: 'get',
+            url: '/api/myblogtxt/detail?title=' + encodeURI(query.title)
+        })
+	      .then(function (response) {
+            return { blogData: response.data.data[0], blogContent: marked(response.data.data[0].content)};
+        })
+    },
+    data() {
+        return {
+          content: []
+        }
+    },
+    mounted() {
+        var menuNode = this.$refs.content.querySelectorAll('h1,h2,h3')
+        for (var node of menuNode) {
+            var _node = node.cloneNode();
+            _node.innerHTML = node.innerHTML;
+            this.content.push(_node)
+        }
+    }
+}
+</script>
 <style scoped>
 .layout{
     background: #f5f7f9;
@@ -29,80 +84,7 @@
     margin: 0 auto;
 }
 </style>
-<template>
-    <div class="layout">
-        <Layout>
-            <Header>
-                <TopNav />
-            </Header>
-            <Content :style="{padding: '0 50px'}">
-                <Breadcrumb :style="{margin: '20px 0'}">
-                    <BreadcrumbItem>{{blogData.title}}</BreadcrumbItem>
-                </Breadcrumb>
-                <!-- <Card>
-                    <div style="min-height: 50px;">
-                        {{blogData.summary}}
-                    </div>
-                </Card> -->
-                <Card>
-                    <div class="content" style="min-height: 400px;">
-                        <div id="content" v-html='blogContent'></div>
-                    </div>
-                </Card>
-            </Content>
-            <Footer class="layout-footer-center">2019-2020 &copy; {{blogData.title}}</Footer>
-        </Layout>
-    </div>
-</template>
-<script>
-import marked from 'marked'
-import TopNav from '~/components/TopNav.vue'
-import axios from 'axios'
-
-export default {
-    components: {
-        TopNav
-    },
-    asyncData ({ query }) {//请求
-        return axios({
-            method: 'get',
-            url: '/api/myblogtxt/detail?title=' + encodeURI(query.title)
-        })
-	      .then(function (response) {
-            return { blogData: response.data.data[0], blogContent: marked(response.data.data[0].content)};
-        })
-    },
-    data() {
-        return {
-
-        }
-    },
-    mounted() {
-      var menuNode = document.getElementById('content')
-      var menuNode = menuNode.querySelectorAll('h1,h2,h3')
-      var div = document.createElement('div')
-      div.setAttribute("id","markdown-nav")
-      for (var node of menuNode) {
-        var _node = node
-        div.appendChild(_node)
-      }
-      document.body.appendChild(div)
-    }
-}
-</script>
 <style>
-#markdown-nav {
-  width: 200px;
-  height: 400px;
-  position: fixed;
-  right: 40px;
-  padding: 10px;
-  top: 120px;
-  border: 1px solid #303030
-}
-#markdown-nav h1 {
-  padding-left: 30px;
-}
 .content .markdown-here-wrapper {
   font-size: 16px;
   line-height: 1.8em;
