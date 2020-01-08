@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "highlight.js": "^9.17.1",
     "iview": "^3.1.5",
     "marked": "^0.8.0",
     "nuxt": "^2.0.0"

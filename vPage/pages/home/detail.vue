@@ -21,6 +21,9 @@
 </template>
 <script>
 import marked from 'marked'
+import hljs from "highlight.js";
+import javascript from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/atom-one-dark-reasonable.css';
 import TopNav from '~/components/TopNav.vue'
 import axios from 'axios'
 import Affix from '../../components/MarkdownAffix.vue'
@@ -35,6 +38,20 @@ export default {
             url: '/api/myblogtxt/detail?title=' + encodeURI(query.title)
         })
 	      .then(function (response) {
+            marked.setOptions({
+              renderer: new marked.Renderer(),
+              highlight: function(code) {
+                return hljs.highlightAuto(code).value;
+              },
+              pedantic: false,
+              gfm: true,
+              tables: true,
+              breaks: false,
+              sanitize: false,
+              smartLists: true,
+              smartypants: false,
+              xhtml: false
+            });
             return { blogData: response.data.data[0], blogContent: marked(response.data.data[0].content)};
         })
     },
@@ -92,7 +109,7 @@ export default {
 }
 
 .content pre, .content code {
-  font-size: 14px;
+  font-weight: bolder;
   font-family: Roboto, 'Courier New', Consolas, Inconsolata, Courier, monospace;
   margin: auto 5px;
 }
@@ -104,6 +121,7 @@ export default {
 }
 
 .content pre {
+  background-color: #EFF7EF;
   font-size: 15px;
   line-height: 1.4em;
   display: block !important;
