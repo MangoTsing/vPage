@@ -3,10 +3,10 @@
     <div>
       <logo />
       <h1 class="title">
-        vPage—qicoo
+        qicoo
       </h1>
       <h2 class="subtitle">
-        欢迎来到我的试验田
+        欢迎来到前端技术试验田
       </h2>
       <div class="links">
         <Button type="primary" size="large" target="_blank" to="/home">

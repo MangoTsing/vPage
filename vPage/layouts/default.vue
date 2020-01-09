@@ -3,7 +3,14 @@
     <nuxt />
   </div>
 </template>
-
+<script>
+import TopNav from '../components/TopNav'
+export default {
+  components:{
+    TopNav
+  }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
