@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.9.2",
     "highlight.js": "^9.17.1",
     "iview": "^3.1.5",
     "marked": "^0.8.0",

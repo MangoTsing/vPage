@@ -4,7 +4,7 @@
             <Header>
                 <TopNav />
             </Header>
-            <affix :offset="60" :content="content" class="nav"><div ref="markdown-nav"></div></affix>
+            <affix :offsetTop="100" :content="content"></affix>
             <Content :style="{padding: '0 50px'}">
                 <Breadcrumb :style="{margin: '20px 0'}">
                     <BreadcrumbItem>{{blogData.title}}</BreadcrumbItem>
