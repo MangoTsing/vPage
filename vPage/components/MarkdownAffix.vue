@@ -25,6 +25,11 @@ export default {
   watch: {
     content(val) {
       val.forEach((item, index) => {
+        let id = item.getAttribute('id')
+        item.setAttribute("id",id+'-nav')
+        let text = item.innerHTML.replace(',','')
+        let search = `title=${this.$nuxt.$route.query.title}`
+        item.innerHTML = `<a href="${window.location.origin}${this.$nuxt.$route.path}?${search}#${text}">${text}</a>`
         document.getElementById("markdown-nav").appendChild(item);
       });
     }
@@ -76,7 +81,7 @@ export default {
     handleScroll() {
       const affix = this.affix;
       const scrollTop = this.getScroll(window, true);
-      const elOffset = this.getOffset(this.$el);//原本为this.$el，因为加入动态的markdown格式，需要更换为子元素
+      const elOffset = this.getOffset(this.$el);
       const windowHeight = window.innerHeight;
       const elHeight = this.$el.getElementsByTagName("div")[0].offsetHeight;
       // Fixed Top
@@ -124,7 +129,7 @@ export default {
   opacity: 0;
   position: absolute;
   visibility: hidden;
-  transition: 1s ease-in-out
+  transition: .5s ease-in-out
 }
 .affix {
   position: fixed;
@@ -134,31 +139,37 @@ export default {
 }
 
 #markdown-nav {
-  width: 250px;
+  width: 240px;
   color: #eff7ef;
-  padding: 10px;
-  /* top: 120px; */
-  border-radius: 15px;
-  background: teal;
+  padding: 15px 10px;
+  margin: 10px;
+  border-radius: 10px;
+  background: #019291;
 }
 #markdown .active {
   background: #176917;
 }
-#markdown-nav h1 {
+#markdown-nav h1:hover, #markdown-nav h2:hover, #markdown-nav h3:hover, #markdown-nav h4:hover {
+  background: #176917;
+  transition: .5s
+}
+#markdown-nav h1 a{
   margin-bottom: 5px;
   padding-left: 5px;
   font-size: 20px;
+  color:antiquewhite;
 }
-#markdown-nav h2 {
+#markdown-nav h2 a{
   margin-bottom: 5px;
   padding-left: 10px;
+  color:antiquewhite
 }
-#markdown-nav h3 {
+#markdown-nav h3 a{
   color: white;
   margin-bottom: 5px;
   padding-left: 20px;
 }
-#markdown-nav h4 {
+#markdown-nav h4 a{
   color: white;
   margin-bottom: 5px;
   padding-left: 25px;

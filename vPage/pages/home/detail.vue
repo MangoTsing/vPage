@@ -4,7 +4,8 @@
             <Header>
                 <TopNav />
             </Header>
-            <affix :offsetTop="100" :content="content"></affix>
+            <!-- <Affix :offsetTop="10">abccba</Affix> -->
+            <mk-affix :offsetTop="20" :content="content"></mk-affix>
             <Content :style="{padding: '0 50px'}">
                 <Breadcrumb :style="{margin: '20px 0'}">
                     <BreadcrumbItem>{{blogData.title}}</BreadcrumbItem>
@@ -26,11 +27,11 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import 'highlight.js/styles/atom-one-dark-reasonable.css';
 import TopNav from '~/components/TopNav.vue'
 import axios from 'axios'
-import Affix from '../../components/MarkdownAffix.vue'
+import MkAffix from '../../components/MarkdownAffix.vue'
 export default {
     components: {
         TopNav,
-        Affix
+        MkAffix
     },
     asyncData ({ query }) {//请求
         return axios({
