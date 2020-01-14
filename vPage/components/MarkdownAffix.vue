@@ -123,7 +123,7 @@ export default {
 };
 </script>
 <style>
-@media screen and (max-device-width:960px){
+@media screen and (max-width:960px){
     .markdown-nav{
         display: none;
     }
@@ -143,7 +143,7 @@ export default {
 }
 
 #markdown-nav {
-  width: 240px;
+  width: 230px;
   color: #eff7ef;
   padding: 15px 10px;
   margin: 5px;

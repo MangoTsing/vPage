@@ -104,26 +104,32 @@ export default {
 .contentCls {
   padding: 0 1rem;
 }
-.ivu-layout-content {
-    width: 960px;
-    margin: 0 auto;
-}
+  .ivu-layout-content {
+      width: 960px;
+      margin: 0 auto;
+  }
 
-@media screen and (max-device-width:960px){
+@media screen and (max-device-width:768px){
     .ivu-layout-content{
-        width: 25rem;
+        width: 40rem;
     }
     .title {
       text-align: center;
       font-size: 1.3rem;
     }
 }
-
-@media screen and (max-device-width:375px){
+@media screen and (min-width:375px) and (max-width:767px){
+    .ivu-layout-content{
+        width: 22rem;
+    }
+}
+@media screen and (max-device-width:320px){
     .ivu-layout-content{
         width: 20rem;
     }
 }
+
+
 </style>
 <style>
 .content .markdown-here-wrapper {

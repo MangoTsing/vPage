@@ -40,7 +40,7 @@
                     {{ item.summary }}
                     </nuxt-link>
                     <template slot="extra">
-                        <img :src="item.coverImg || 'https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large'" style="width: 250px;height:125px">
+                        <img :src="item.coverImg || 'https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large'" style="width: 100%;height:125px">
                         <li @click="postStar(item)">
                             <Button icon="ios-star" type="primary" shape="circle"> {{item.star || 0}}</Button>
                         </li>
@@ -103,7 +103,7 @@ export default {
         }
     },
     mounted() {
-        if (window.screen.width<960){
+        if (window.screen.width < 960){
             var gitment = new Gitment({
                 owner: 'MangoTsing',
                 repo: 'vPage',
