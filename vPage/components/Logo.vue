@@ -1,5 +1,5 @@
 <template>
-  <img class="Logo" src="https://avatars1.githubusercontent.com/u/23053008?s=460&v=4" alt="Nuxt">
+  <img class="Logo" src="http://p0.qhimg.com/t01b6820340519d802c.jpg" alt="Qicoo">
 </template>
 <style>
 .Logo {

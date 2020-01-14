@@ -86,7 +86,6 @@ export default {
       const elHeight = this.$el.getElementsByTagName("div")[0].offsetHeight;
       // Fixed Top
       if (elOffset.top - this.offsetTop < scrollTop && !affix) {
-          console.log(true)
         this.affix = true;
         this.slotStyle = {
           width: this.$refs.point.clientWidth + "px",

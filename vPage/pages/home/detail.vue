@@ -6,7 +6,7 @@
             </Header>
             <!-- <Affix :offsetTop="10">abccba</Affix> -->
             <mk-affix :offsetTop="20" :content="content"></mk-affix>
-            <Content :style="{padding: '0 1rem'}">
+            <Content :class="contentCls">
                 <Breadcrumb :style="{margin: '20px 0'}">
                     <BreadcrumbItem class="title">{{blogData.title}}</BreadcrumbItem>
                 </Breadcrumb>
@@ -58,7 +58,8 @@ export default {
     },
     data() {
         return {
-          content: []
+          content: [],
+          contentCls: ''
         }
     },
     mounted() {
@@ -67,6 +68,9 @@ export default {
             var _node = node.cloneNode();
             _node.innerHTML = node.innerHTML;
             this.content.push(_node)
+        }
+        if ( window.screen.width < 375 ){
+            this.contentCls = 'contentCls'
         }
     }
 }
@@ -97,6 +101,9 @@ export default {
 }
 </style>
 <style>
+.contentCls {
+  padding: 0 1rem;
+}
 .ivu-layout-content {
     width: 960px;
     margin: 0 auto;
