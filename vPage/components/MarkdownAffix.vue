@@ -124,6 +124,11 @@ export default {
 };
 </script>
 <style>
+@media screen and (max-device-width:960px){
+    .markdown-nav{
+        display: none;
+    }
+}
 .markdown-nav {
   /* display: none; */
   opacity: 0;
@@ -142,7 +147,7 @@ export default {
   width: 240px;
   color: #eff7ef;
   padding: 15px 10px;
-  margin: 10px;
+  margin: 5px;
   border-radius: 10px;
   background: #019291;
 }

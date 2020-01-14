@@ -22,11 +22,14 @@ export default {
     }
 }
 </script>
+<style>
+</style>
 <style scoped>
 .main {
     width: 960px;
     margin: 0 auto;
 }
+
 .main ul {
     list-style: none;
     float: right;
@@ -44,5 +47,15 @@ export default {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
+}
+
+@media screen and (max-device-width:960px){
+    .main {
+        width: 15rem;
+        text-align: center;
+    }
+    .main ul{
+        display: none;
+    }
 }
 </style>

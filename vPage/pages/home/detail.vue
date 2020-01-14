@@ -6,9 +6,9 @@
             </Header>
             <!-- <Affix :offsetTop="10">abccba</Affix> -->
             <mk-affix :offsetTop="20" :content="content"></mk-affix>
-            <Content :style="{padding: '0 50px'}">
+            <Content :style="{padding: '0 1rem'}">
                 <Breadcrumb :style="{margin: '20px 0'}">
-                    <BreadcrumbItem>{{blogData.title}}</BreadcrumbItem>
+                    <BreadcrumbItem class="title">{{blogData.title}}</BreadcrumbItem>
                 </Breadcrumb>
                 <Card>
                     <div class="content" style="min-height: 400px;">
@@ -101,6 +101,22 @@ export default {
     width: 960px;
     margin: 0 auto;
 }
+
+@media screen and (max-device-width:960px){
+    .ivu-layout-content{
+        width: 25rem;
+    }
+    .title {
+      text-align: center;
+      font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-device-width:375px){
+    .ivu-layout-content{
+        width: 20rem;
+    }
+}
 </style>
 <style>
 .content .markdown-here-wrapper {
@@ -115,10 +131,11 @@ export default {
   margin: auto 5px;
 }
 
-.content code {
+.content p code {
   white-space: pre-wrap;
   border-radius: 2px;
   display: inline;
+  color:crimson
 }
 
 .content pre {
@@ -274,5 +291,11 @@ export default {
   color: #eee;
   border: 1px solid #009688;
   background-color: #009688;
+}
+@media screen and (max-device-width:960px){
+  .content img {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
