@@ -3,6 +3,19 @@
     <nuxt />
   </div>
 </template>
+<script type="text/javascript">
+	if(window.location.href.indexOf("?mobile")<0){
+		try{
+			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){                                //触屏手机版地址
+				window.location.href="http://m.sxyle.com";
+			}else if(/iPad/i.test(navigator.userAgent)){     
+                                 //pad版地址
+			}else{                                //普通手机版地址
+				window.location.href="http://m.sxyle.com"
+			}
+		}catch(e){}
+  }
+</script>
 <script>
 import TopNav from '../components/TopNav'
 export default {
