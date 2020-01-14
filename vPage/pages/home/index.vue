@@ -40,9 +40,9 @@
                     {{ item.summary }}
                     </nuxt-link>
                     <template slot="extra">
-                        <img :src="item.coverImg || 'https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large'" style="width: 100%;height:125px">
+                        <img :src="item.coverImg || 'https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large'" style="width: 250px;height:125px;margin:5px auto;display:block">
                         <li @click="postStar(item)">
-                            <Button icon="ios-star" type="primary" shape="circle"> {{item.star || 0}}</Button>
+                            <Button size="large" style="margin:5px auto;display:block" icon="ios-star" type="primary" shape="circle"> {{item.star || 0}}</Button>
                         </li>
                     </template>
                 </ListItem>
@@ -156,6 +156,9 @@ export default {
 @media screen and (max-device-width:960px){
     .ivu-layout-header {
         min-width: 100px;  
+    }
+    .ivu-list-item-extra {
+        width: 100%
     }
     .center {
         display: none;
