@@ -54,8 +54,8 @@ export default {
     [
       '/api', 
       { 
-        // target: 'http://172.17.131.56:8360', // api主机
-        target: 'http://59.110.236.40:8360',
+        target: 'http://172.17.131.56:8360', // api主机
+        //target: 'http://59.110.236.40:8360',
         pathRewrite: { '^/api' : '/' }
       }
   ]
