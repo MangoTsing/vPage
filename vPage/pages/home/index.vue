@@ -3,7 +3,7 @@
         <Header>
             <TopNav />
         </Header>
-        <div class="center">
+        <div v-if="smallScreen" class="center">
             <div class="left">
                 <List item-layout="vertical" size="large" >
                     <ListItem v-for="(item,index) in blogData" :key="index" >
@@ -31,7 +31,7 @@
                 <ActionCard />
             </div>
         </div>
-        <div class="m-center">
+        <div v-if="!smallScreen" class="m-center">
             <List item-layout="horizontal" size="large" >
                 <ListItem v-for="(item,index) in blogData" :key="index" >
                     <nuxt-link :to="{ path: 'home/detail', query: { title: item.title }}">
@@ -47,7 +47,7 @@
                     </template>
                 </ListItem>
             </List>
-            <div id="m-gitment"></div>
+            <div id="gitment"></div>
         </div>
     </div>
 </template>
@@ -81,6 +81,7 @@ export default {
     },
     data() {
         return {
+            smallScreen: true
         }
     },
     methods: {
@@ -103,25 +104,18 @@ export default {
         }
     },
     mounted() {
+        var gitment = new Gitment({
+            owner: 'MangoTsing',
+            repo: 'vPage',
+            oauth: {
+                client_id: '2a5c95e26afc325ebd6a',
+                client_secret: 'e77b86d1722170a0ad83f02c21e27ac545877a73',
+            }
+        })
         if (window.screen.width < 960){
-            var gitment = new Gitment({
-                owner: 'MangoTsing',
-                repo: 'vPage',
-                oauth: {
-                    client_id: '2a5c95e26afc325ebd6a',
-                    client_secret: 'e77b86d1722170a0ad83f02c21e27ac545877a73',
-                }
-            })
-            gitment.render('m-gitment')
+            this.smallScreen = false
+            gitment.render('gitment')
         } else {
-            var gitment = new Gitment({
-                owner: 'MangoTsing',
-                repo: 'vPage',
-                oauth: {
-                    client_id: '2a5c95e26afc325ebd6a',
-                    client_secret: 'e77b86d1722170a0ad83f02c21e27ac545877a73',
-                }
-            })
             gitment.render('gitment')
         }
     }
