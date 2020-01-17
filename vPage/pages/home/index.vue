@@ -114,7 +114,9 @@ export default {
         })
         if (window.screen.width < 960){
             this.smallScreen = false
-            gitment.render('gitment')
+            this.$nextTick(()=>{
+                gitment.render('gitment')
+            })
         } else {
             gitment.render('gitment')
         }

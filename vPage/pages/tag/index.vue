@@ -28,29 +28,16 @@
                 <div id="gitment"></div>
             </div>
             <div class="right">
-                <ActionCard />
             </div>
         </div>
     </div>
 </template>
 <script>
 import TopNav from '~/components/TopNav.vue'
-import ActionCard from '~/components/ActionCard.vue'
 import axios from 'axios'
 export default {
-    head() {
-        return {
-                link: [
-                    { rel:"stylesheet", href:"https://s2.ssl.qhres.com/static/b9cc92f51476444e.css"}
-                ],
-                script: [
-                    { src:"https://s5.ssl.qhres.com/static/8cbd096780bc622f.js"}
-                ]
-        }
-    },
     components: {
-        TopNav,
-        ActionCard
+        TopNav
     },
     asyncData ({ params }) {//请求
         return  axios({
@@ -66,15 +53,6 @@ export default {
         }
     },
     methods: {
-        postStar(item) {
-            return axios({
-                method: 'get',
-                url: '/api/myblogtxt/poststar?title=' + encodeURI(item.title)
-            }).then(res=>{
-                // this.getList()
-                item.star += 1
-            })
-        },
         getList() {
             return axios({
                 method: 'get',
@@ -85,15 +63,6 @@ export default {
         }
     },
     mounted() {
-        var gitment = new Gitment({
-        owner: 'MangoTsing',
-        repo: 'vPage',
-        oauth: {
-            client_id: '2a5c95e26afc325ebd6a',
-            client_secret: 'e77b86d1722170a0ad83f02c21e27ac545877a73',
-        },
-        })
-        gitment.render('gitment')
     }
 
 }
