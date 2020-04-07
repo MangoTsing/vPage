@@ -1,5 +1,5 @@
 <template>
-  <img class="Logo" src="http://p0.qhimg.com/t01b6820340519d802c.jpg" alt="Qicoo">
+  <img class="Logo" src="https://hao8.qhimg.com/t01b6820340519d802c.jpg" alt="Qicoo">
 </template>
 <style>
 .Logo {
